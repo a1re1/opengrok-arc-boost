@@ -257,7 +257,16 @@
     const style = document.createElement("style");
     style.id = "opengrok-theme-style";
     style.textContent = `
-      /* Background and base text */
+      /* Page background to match code theme */
+      body,
+      #content,
+      #page {
+        background: ${theme.background} !important;
+        color: ${theme.foreground} !important;
+      }
+
+      /* Code container background */
+      #src,
       #src pre {
         background: ${theme.background} !important;
         color: ${theme.foreground} !important;
@@ -341,11 +350,38 @@
         color: ${theme.foreground} !important;
       }
 
-      /* Adjust the overall container if needed */
+      /* Header and navigation styling to match theme */
+      #whole_header,
+      #Masthead {
+        background: ${theme.background} !important;
+        color: ${theme.foreground} !important;
+        border-bottom: 1px solid ${theme.lineNumbers}44 !important;
+      }
+
+      #bar {
+        background: ${theme.background} !important;
+        border-bottom: 1px solid ${theme.lineNumbers}44 !important;
+      }
+
+      #bar a {
+        color: ${theme.foreground} !important;
+      }
+
+      #bar a:hover {
+        background: ${theme.tokens.keyword}22 !important;
+      }
+
+      /* Breadcrumb links in masthead */
+      #Masthead a {
+        color: ${theme.tokens.link} !important;
+      }
+
+      /* Adjust the overall container */
       #src {
         padding: 1em;
         border-radius: 8px;
         margin: 1em 0;
+        border: 1px solid ${theme.lineNumbers}33;
       }
     `;
 
