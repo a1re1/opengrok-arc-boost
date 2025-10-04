@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 350px;
+            min-height: 200px;
+            padding: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #ffffff;
+            margin: 0;
+        }
+        h1 {
+            font-size: 18px;
+            color: #0b1220;
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #0b61ff 0%, #8b5cf6 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 10px;
+        }
+        p {
+            color: #4b5565;
+            line-height: 1.5;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+        .features {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 16px 0;
+        }
+        .features h2 {
+            font-size: 14px;
+            color: #0b1220;
+            margin: 0 0 8px 0;
+        }
+        .features ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #4b5565;
+            font-size: 13px;
+        }
+        .features li {
+            margin: 4px 0;
+        }
+        .shortcut {
+            background: #eaf2ff;
+            color: #0b61ff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .footer {
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 12px;
+            color: #6b7280;
+            text-align: center;
+        }
+        a {
+            color: #0b61ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        <div class="logo">OG</div>
+        OpenGrok Modern Boost
+    </h1>
+
+    <p>This extension modernizes OpenGrok's interface with better styling and GitHub integration.</p>
+
+    <div class="features">
+        <h2>Features</h2>
+        <ul>
+            <li>Clean, modern design</li>
+            <li>GitHub integration button</li>
+            <li>12+ syntax highlighting themes</li>
+            <li>Line number preservation</li>
+        </ul>
+        <h2 style="margin-top: 12px;">Keyboard Shortcuts</h2>
+        <ul>
+            <li>Press <span class="shortcut">G</span> to open in GitHub</li>
+            <li>Press <span class="shortcut">T</span> for theme selector</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <a href="https://github.com" target="_blank">View on GitHub</a>
+    </div>
+</body>
+</html>

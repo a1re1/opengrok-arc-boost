@@ -1,49 +1,74 @@
-# OpenGrok Modern Boost
+# OpenGrok Modern Boost - Chrome Extension
 
-## What This Boost Does
+This Chrome extension modernizes OpenGrok's interface with improved styling and GitHub integration.
 
-This Arc Browser Boost modernizes OpenGrok's interface and adds convenient GitHub integration.
+## Installation
+
+### Developer Mode Installation
+
+1. Open Chrome and navigate to `chrome://extensions/`
+2. Enable "Developer mode" in the top right
+3. Click "Load unpacked"
+4. Select this directory (`opengrok-arc-boost`)
+5. The extension will be installed and active
+
+### Files Structure
+
+```
+opengrok-arc-boost/
+├── manifest.json        # Extension configuration
+├── content.js           # Main content script (GitHub integration)
+├── opengrok-themes.js   # Native theme system for syntax highlighting
+├── styles.css           # Modern UI styles
+├── popup.html           # Extension popup
+├── icons/               # Extension icons
+│   └── icon.svg
+└── generate-icons.html  # Icon generator (optional)
+```
 
 ## Features
 
-### Visual Improvements
+- **Modern Design**: Clean, professional interface
+- **GitHub Integration**: Floating button to open files in GitHub
+- **Enhanced Syntax Highlighting**: Native theme system with 12+ color schemes
+- **Keyboard Shortcuts**:
+  - Press `G` to open current file in GitHub
+  - Press `T` to open theme selector for syntax highlighting
+- **Line Preservation**: Maintains line numbers when switching to GitHub
+- **Theme Customization**: Choose from 13+ built-in themes or add custom CSS
 
-- **Clean, modern design** with better typography and spacing
-- **High-contrast colors** for improved readability
-- **Compact layout** that reduces wasted space
-- **Consistent styling** across search results, code view, and directory listings
-- **Subtle animations** and hover effects
-- **Responsive design** that works on different screen sizes
+## Usage
 
-### GitHub Integration
+1. Navigate to any OpenGrok instance
+2. The extension automatically applies styling
+3. Click the floating "GitHub" button or press `G` to open in GitHub
+4. Use the extension popup to see available features
 
-- **Floating GitHub button** in the bottom-right corner
-- **Line number preservation** - if you're viewing line #20 in OpenGrok, it will open to line #20 on GitHub
-- **Keyboard shortcut** - press `g` to quickly open the current file in GitHub
-- **Automatic URL detection** - figures out the correct GitHub repository automatically
-- **Commit SHA support** - when viewing specific file revisions, links to the exact commit
-- **Smart detection** - works for both file views and directory listings
+## Custom Repository Mapping
 
-### Enhanced UX
+To customize GitHub repository mappings, edit `content.js` and uncomment/modify:
 
-- **Better code readability** with improved syntax highlighting
-- **Compact search form** that uses space efficiently
-- **Fixed overlapping elements** - no more buttons being covered by dropdowns
+```javascript
+window.OPEN_GITHUB_MAP = {
+  "project-name": "https://github.com/owner/repo",
+};
+```
 
-## How It Works
+## Notes
 
-1. **On OpenGrok pages**, the boost automatically activates
-2. **GitHub button appears** when viewing code files or directories
+- The extension activates on pages matching `/xref/*`, `/search*`, and `/source/*` patterns
+- GitHub repository detection is automatic but can be overridden
+- Settings are cached in localStorage for 24 hours
 
-- **Line anchors preserved** - `#20` in OpenGrok becomes `#L20` on GitHub
+## Icons
 
-2. **Click the floating button** to open the current file/directory in GitHub
-3. **Press `g` key** for quick access (no modifier keys needed)
-4. **For files with specific revisions**, links directly to that commit
-5. **For directories**, links to the default branch (main/master)
+To generate proper PNG icons:
 
-## Keyboard Shortcuts
+1. Open `generate-icons.html` in a browser
+2. Right-click each canvas and save as PNG with the specified filename
+3. Move the PNG files to the `icons/` directory
+4. Update `manifest.json` to reference the PNG files instead of SVG
 
-- `g` - Open current file/directory in GitHub
+## Original Arc Boost
 
-The boost makes OpenGrok feel like a modern code browsing tool while maintaining all its powerful search capabilities.
+This extension is based on the Arc Browser boost for OpenGrok. The original boost features have been adapted for Chrome extension architecture.

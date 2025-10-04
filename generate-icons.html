@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator for OpenGrok Extension</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>OpenGrok Extension Icon Generator</h1>
+    <p>Right-click each canvas and save as PNG with the corresponding filename:</p>
+
+    <div>
+        <canvas id="icon-16" width="16" height="16"></canvas>
+        <label>Save as: icon-16.png</label>
+    </div>
+
+    <div>
+        <canvas id="icon-32" width="32" height="32"></canvas>
+        <label>Save as: icon-32.png</label>
+    </div>
+
+    <div>
+        <canvas id="icon-48" width="48" height="48"></canvas>
+        <label>Save as: icon-48.png</label>
+    </div>
+
+    <div>
+        <canvas id="icon-128" width="128" height="128"></canvas>
+        <label>Save as: icon-128.png</label>
+    </div>
+
+    <script>
+        function drawIcon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#0b61ff');
+            gradient.addColorStop(1, '#8b5cf6');
+
+            // Round rect background
+            ctx.fillStyle = gradient;
+            const radius = size * 0.15;
+            ctx.beginPath();
+            ctx.moveTo(radius, 0);
+            ctx.lineTo(size - radius, 0);
+            ctx.quadraticCurveTo(size, 0, size, radius);
+            ctx.lineTo(size, size - radius);
+            ctx.quadraticCurveTo(size, size, size - radius, size);
+            ctx.lineTo(radius, size);
+            ctx.quadraticCurveTo(0, size, 0, size - radius);
+            ctx.lineTo(0, radius);
+            ctx.quadraticCurveTo(0, 0, radius, 0);
+            ctx.closePath();
+            ctx.fill();
+
+            // Draw "OG" text
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${size * 0.35}px sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('OG', size / 2, size / 2);
+        }
+
+        // Generate all icons
+        drawIcon('icon-16', 16);
+        drawIcon('icon-32', 32);
+        drawIcon('icon-48', 48);
+        drawIcon('icon-128', 128);
+
+        // Auto-download function (optional)
+        function downloadCanvas(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        }
+
+        // Uncomment to auto-download all icons
+        // setTimeout(() => {
+        //     downloadCanvas('icon-16', 'icon-16.png');
+        //     downloadCanvas('icon-32', 'icon-32.png');
+        //     downloadCanvas('icon-48', 'icon-48.png');
+        //     downloadCanvas('icon-128', 'icon-128.png');
+        // }, 1000);
+    </script>
+</body>
+</html>

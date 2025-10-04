@@ -212,63 +212,10 @@ tbody.search-result td:last-child code.con .l {
   color: var(--brand-strong) !important;
 }
 
-/* ==== OpenGrok Code View — High Contrast Fix ==== */
+/* ==== OpenGrok Code View — Structure Only (Colors handled by highlight.js) ==== */
 
-/* Better syntax highlighting with higher contrast */
-#src b {
-  color: #7c3aed !important; /* Darker purple for keywords */
-  font-weight: 700 !important;
-}
-
-#src .s,
-#src .s a {
-  color: #047857 !important; /* Darker green for strings */
-  font-weight: 500;
-}
-
-#src .n {
-  color: #b91c1c !important; /* Darker red for numbers */
-  font-weight: 600;
-}
-
-#src .c {
-  color: #6b7280 !important; /* Comments stay gray */
-  font-style: italic;
-}
-
-/* Fix purple links that are hard to read */
-#src a {
-  color: #1e40af !important; /* Darker blue instead of purple */
-  text-decoration: none;
-  font-weight: 500;
-}
-
-#src a:hover {
-  text-decoration: underline;
-  background: #eff6ff;
-  padding: 0 2px;
-  margin: 0 -2px;
-  border-radius: 2px;
-}
-
-/* Specific keyword colors */
-#src b:contains("import"),
-#src b:contains("export"),
-#src b:contains("const"),
-#src b:contains("async"),
-#src b:contains("await"),
-#src b:contains("return"),
-#src b:contains("new"),
-#src b:contains("from"),
-#src b:contains("try"),
-#src b:contains("catch"),
-#src b:contains("if") {
-  color: #7c3aed !important; /* Purple for keywords */
-}
-
-/* Better line numbers */
+/* Better line numbers - structure only */
 #src .l {
-  color: #94a3b8 !important; /* Slightly darker gray */
   font-weight: 500;
   background: #f8fafc !important;
   border-right: 2px solid #e2e8f0;
@@ -276,7 +223,6 @@ tbody.search-result td:last-child code.con .l {
 
 #src .l:hover {
   background: #e2e8f0 !important;
-  color: #1e293b !important;
 }
 
 /* Make the line extend full width when highlighted */
@@ -289,46 +235,6 @@ tbody.search-result td:last-child code.con .l {
   background: #fef3c7;
   z-index: -1;
   pointer-events: none;
-}
-
-/* Better contrast for special syntax elements */
-#src a.intelliWindow-symbol,
-#src a.d {
-  color: #1e293b !important; /* Near black for better readability */
-  font-weight: 600;
-  border-bottom: 1px dotted #64748b;
-}
-
-#src a.intelliWindow-symbol:hover,
-#src a.d:hover {
-  background: #dbeafe !important;
-  color: #1e40af !important;
-  border-bottom-color: #1e40af;
-  padding: 1px 3px;
-  margin: -1px -3px;
-  border-radius: 3px;
-}
-
-/* Function/method names */
-#src a[href*="defs="] {
-  color: #0f766e !important; /* Teal for function names */
-  font-weight: 600;
-}
-
-/* Import paths and strings */
-#src .s {
-  color: #15803d !important; /* Forest green */
-  font-weight: 500;
-}
-
-/* Punctuation and operators */
-#src {
-  color: #1e293b !important; /* Very dark for main text */
-}
-
-/* Better visibility for parentheses, brackets, etc */
-#src:not(a):not(b):not(.s):not(.n):not(.c):not(.l) {
-  color: #334155 !important;
 }
 
 /* Navigation bar improvements */
